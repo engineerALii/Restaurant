@@ -97,6 +97,7 @@
             background-attachment: fixed;
             color: #f8fafc;
             min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
         }
         
         /* Modern Glassmorphism */
@@ -159,25 +160,25 @@
     <nav class="fixed top-0 w-full z-50 glass shadow-2xl shadow-black/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-4">
-                    <div class="relative w-12 h-12 rounded-full bg-gradient-to-br from-gold-600/20 to-transparent p-0.5 border border-gold-500/30 flex items-center justify-center shadow-glow">
-                        <img src="https://gu.edu.iq/favicon.svg" alt="Gilgamesh Logo" class="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]">
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-gold-600/20 to-transparent p-0.5 border border-gold-500/30 flex items-center justify-center shadow-glow">
+                        <img src="https://gu.edu.iq/favicon.svg" alt="Gilgamesh Logo" class="w-6 h-6 sm:w-8 sm:h-8 object-contain drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]">
                     </div>
                     <div class="flex flex-col">
-                        <h1 class="text-2xl font-black tracking-tight text-white leading-none">
+                        <h1 class="text-xl sm:text-2xl font-black tracking-tight text-white leading-none">
                             كلكامش
                         </h1>
-                        <span class="text-xs text-gold-500 font-medium tracking-wide uppercase">Gilgamesh Lounge</span>
+                        <span class="text-[10px] sm:text-xs text-gold-500 font-medium tracking-wide uppercase">Gilgamesh Lounge</span>
                     </div>
                 </div>
                 
-                <div class="flex space-x-reverse space-x-3">
-                    <button onclick="switchView('customer')" id="btn-customer" class="relative overflow-hidden px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 shadow-glow hover:shadow-glow-strong transform hover:-translate-y-0.5 group">
-                        <span class="relative z-10 flex items-center gap-2"><i class="fa-solid fa-utensils"></i> القائمة</span>
+                <div class="flex space-x-reverse space-x-2 sm:space-x-3">
+                    <button onclick="switchView('customer')" id="btn-customer" class="relative overflow-hidden px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 shadow-glow hover:shadow-glow-strong transform hover:-translate-y-0.5 group">
+                        <span class="relative z-10 flex items-center gap-1 sm:gap-2"><i class="fa-solid fa-utensils"></i> القائمة</span>
                         <div class="shimmer"></div>
                     </button>
-                    <button onclick="requestCashierAccess()" id="btn-cashier" class="px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-cash-register"></i> الكاشير</span>
+                    <button onclick="requestCashierAccess()" id="btn-cashier" class="px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10">
+                        <span class="flex items-center gap-1 sm:gap-2"><i class="fa-solid fa-cash-register"></i> الكاشير</span>
                     </button>
                 </div>
             </div>
@@ -185,29 +186,31 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="pt-28 pb-12 px-4 max-w-7xl mx-auto min-h-screen">
+    <div class="pt-24 sm:pt-28 pb-12 px-3 sm:px-4 max-w-7xl mx-auto min-h-screen">
         
         <!-- ================= CUSTOMER VIEW ================= -->
         <div id="customer-view" class="fade-in">
             <!-- Hero Header -->
-            <div class="mb-12 text-center relative">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gold-500/10 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
-                <h2 class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 mb-4 drop-shadow-sm">
+            <div class="mb-8 sm:mb-12 text-center relative px-2">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 bg-gold-500/10 rounded-full blur-[60px] sm:blur-[80px] -z-10 pointer-events-none"></div>
+                <!-- Responsive Title: Smaller on mobile (text-3xl), larger on tablet/desktop -->
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 mb-3 sm:mb-4 drop-shadow-sm leading-tight">
                     أسطورة المذاق
                 </h2>
-                <p class="text-gold-500/80 text-lg font-light tracking-wide mb-8">حيث يلتقي التاريخ بالحداثة في كل طبق</p>
+                <p class="text-gold-500/80 text-base sm:text-lg font-light tracking-wide mb-6 sm:mb-8">حيث يلتقي التاريخ بالحداثة في كل طبق</p>
                 
-                <div class="flex flex-wrap justify-center gap-3" id="category-filters">
-                    <button onclick="filterMenu('all')" class="filter-btn active px-6 py-2.5 rounded-full text-sm font-bold border border-gold-500/20 bg-gold-500/10 text-gold-400 shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all">الكل</button>
-                    <button onclick="filterMenu('food')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-white/5 hover:bg-white/5 text-gray-400 transition-all">مأكولات</button>
-                    <button onclick="filterMenu('drinks')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-white/5 hover:bg-white/5 text-gray-400 transition-all">مشروبات</button>
-                    <button onclick="filterMenu('hookah')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-white/5 hover:bg-white/5 text-gray-400 transition-all">أراكيل</button>
-                    <button onclick="filterMenu('offers')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-white/5 hover:bg-white/5 text-gray-400 transition-all">عروض</button>
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3" id="category-filters">
+                    <!-- Responsive Buttons: Smaller padding on mobile -->
+                    <button onclick="filterMenu('all')" class="filter-btn active px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold border border-gold-500/20 bg-gold-500/10 text-gold-400 shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all">الكل</button>
+                    <button onclick="filterMenu('food')" class="filter-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold border border-white/5 hover:bg-white/5 text-gray-400 transition-all">مأكولات</button>
+                    <button onclick="filterMenu('drinks')" class="filter-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold border border-white/5 hover:bg-white/5 text-gray-400 transition-all">مشروبات</button>
+                    <button onclick="filterMenu('hookah')" class="filter-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold border border-white/5 hover:bg-white/5 text-gray-400 transition-all">أراكيل</button>
+                    <button onclick="filterMenu('offers')" class="filter-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold border border-white/5 hover:bg-white/5 text-gray-400 transition-all">عروض</button>
                 </div>
             </div>
 
             <!-- Menu Grid -->
-            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <div class="col-span-full text-center py-20">
                     <div class="inline-block w-16 h-16 border-4 border-gold-500/30 border-t-gold-500 rounded-full animate-spin"></div>
                     <p class="mt-6 text-gray-400 font-light animate-pulse">جاري استحضار قائمة كلكامش...</p>
@@ -220,11 +223,11 @@
             <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
                 <div class="flex items-center gap-3">
                     <div class="w-2 h-8 bg-gold-500 rounded-full"></div>
-                    <h2 class="text-3xl font-bold text-white">لوحة التحكم</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">لوحة التحكم</h2>
                 </div>
                 <!-- Logout Button -->
                 <button onclick="logoutCashier()" class="text-xs flex items-center gap-2 bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white px-3 py-1.5 rounded-lg transition-all border border-red-500/20">
-                    <i class="fa-solid fa-lock"></i> قفل اللوحة
+                    <i class="fa-solid fa-lock"></i> <span class="hidden sm:inline">قفل اللوحة</span>
                 </button>
             </div>
 
